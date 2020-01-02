@@ -8,11 +8,11 @@ def pruned_list(request, name):
   indicator_ids = request.GET.getlist('indicator_ids[]')
   indicator_ids = list(map(int, indicator_ids))
   if not indicator_ids:
-    return JsonResponse(dict({'error': "check your input"}), status=404)
+    return JsonResponse({'error': "check your input"}, status=404)
   try:
     json_data = TreeAPI(name).get()
   except Http404:
-    return JsonResponse(dict({'error': "Requested tree source is not available"}), status=404)
+    return JsonResponse({'error': "Requested tree source is not available"}, status=404)
   except Exception:
     return JsonResponse({"error": "The API is not alright"}, status=500)
   tree = Tree(json_data)
