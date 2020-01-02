@@ -3,11 +3,9 @@ Programming task for Powerhouse
 
 # Steps to get the app running
 1. Clone the repository
-2. activate the env and install the requirements
+2. Run the app in docker with following commands
 ```
-python3 -m venv env
-source env/bin/activate
-pip install -r requirements.txt
+docker build . -t powerhousetask
+docker run -p 8000:8000 powerhousetask
 ```
-3. Then run the app ```python manage.py runserver```
-4. To run the tests execute ```python manage.py test```
+3. To run the tests execute ```docker run powerhousetask python manage.py test```
